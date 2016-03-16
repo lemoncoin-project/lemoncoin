@@ -1,0 +1,11 @@
+[Protocol]
+exec=lemoncoin-qt '%u'
+protocol=lemoncoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

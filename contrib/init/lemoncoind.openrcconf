@@ -1,0 +1,27 @@
+# /etc/conf.d/lemoncoind: config file for /etc/init.d/lemoncoind
+
+# Config file location
+#LEMONCOIND_CONFIGFILE="/etc/lemoncoin/lemoncoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $LEMONCOIND_USER)
+#LEMONCOIND_PIDDIR="/var/run/lemoncoind"
+
+# What filename to give the pidfile
+#LEMONCOIND_PIDFILE="${LEMONCOIND_PIDDIR}/lemoncoind.pid"
+
+# Where to write lemoncoind data (be mindful that the blockchain is large)
+#LEMONCOIND_DATADIR="/var/lib/lemoncoind"
+
+# User and group to own lemoncoind process
+#LEMONCOIND_USER="lemoncoin"
+#LEMONCOIND_GROUP="lemoncoin"
+
+# Path to lemoncoind executable
+#LEMONCOIND_BIN="/usr/bin/lemoncoind"
+
+# Nice value to run lemoncoind under
+#LEMONCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+LEMONCOIND_OPTS="-disablewallet"
+

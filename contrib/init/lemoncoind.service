@@ -1,0 +1,22 @@
+[Unit]
+Description=LemonCoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=lemoncoin
+Group=lemoncoin
+
+Type=forking
+PIDFile=/var/lib/lemoncoind/lemoncoind.pid
+ExecStart=/usr/bin/lemoncoind -daemon -pid=/var/lib/lemoncoind/lemoncoind.pid \
+-conf=/etc/lemoncoin/lemoncoin.conf -datadir=/var/lib/lemoncoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

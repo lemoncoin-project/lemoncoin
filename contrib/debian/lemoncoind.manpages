@@ -1,0 +1,3 @@
+debian/manpages/lemoncoind.1
+debian/manpages/lemoncoin.conf.5
+debian/manpages/lemoncoin-cli.1

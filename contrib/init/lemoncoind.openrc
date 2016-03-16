@@ -1,0 +1,88 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/lemoncoin/.lemoncoin" ]; then
+	LEMONCOIND_DEFAULT_DATADIR="/var/lib/lemoncoin/.lemoncoin"
+else
+	LEMONCOIND_DEFAULT_DATADIR="/var/lib/lemoncoind"
+fi
+
+LEMONCOIND_CONFIGFILE=${LEMONCOIND_CONFIGFILE:-/etc/lemoncoin/lemoncoin.conf}
+LEMONCOIND_PIDDIR=${LEMONCOIND_PIDDIR:-/var/run/lemoncoind}
+LEMONCOIND_PIDFILE=${LEMONCOIND_PIDFILE:-${LEMONCOIND_PIDDIR}/lemoncoind.pid}
+LEMONCOIND_DATADIR=${LEMONCOIND_DATADIR:-${LEMONCOIND_DEFAULT_DATADIR}}
+LEMONCOIND_USER=${LEMONCOIND_USER:-${LEMONCOIN_USER:-lemoncoin}}
+LEMONCOIND_GROUP=${LEMONCOIND_GROUP:-lemoncoin}
+LEMONCOIND_BIN=${LEMONCOIND_BIN:-/usr/bin/lemoncoind}
+LEMONCOIND_NICE=${LEMONCOIND_NICE:-${NICELEVEL:-0}}
+LEMONCOIND_OPTS="${LEMONCOIND_OPTS:-${LEMONCOIN_OPTS}}"
+
+name="LemonCoin Core Daemon"
+description="LemonCoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/lemoncoind"
+command_args="-pid=\"${LEMONCOIND_PIDFILE}\" \
+		-conf=\"${LEMONCOIND_CONFIGFILE}\" \
+		-datadir=\"${LEMONCOIND_DATADIR}\" \
+		-daemon \
+		${LEMONCOIND_OPTS}"
+
+required_files="${LEMONCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${LEMONCOIND_USER} \
+			-N ${LEMONCOIND_NICE} -w 2000"
+pidfile="${LEMONCOIND_PIDFILE}"
+retry=60
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${LEMONCOIND_USER}:${LEMONCOIND_GROUP}" \
+	"${LEMONCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${LEMONCOIND_USER}:${LEMONCOIND_GROUP}" \
+	"${LEMONCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${LEMONCOIND_USER}:${LEMONCOIND_GROUP} \
+	-m 0660 \
+	${LEMONCOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${LEMONCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run lemoncoind."
+		eerror "The setting must appear in ${LEMONCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"LemonCoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}
