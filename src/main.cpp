@@ -1222,7 +1222,6 @@ bool ReadBlockHeaderFromDisk(CBlockHeader& block, const CBlockIndex* pindex)
 
 bool IsInitialBlockDownload()
 {
-    return false;
     const CChainParams& chainParams = Params();
     LOCK(cs_main);
     if (fImporting || fReindex)
