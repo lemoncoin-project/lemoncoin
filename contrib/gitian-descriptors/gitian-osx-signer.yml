@@ -8,7 +8,7 @@ packages:
 - "faketime"
 reference_datetime: "2016-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/lemoncoin/lemoncoin-detached-sigs.git"
+- "url": "https://github.com/withthelemons/lemoncoin-detached-sigs.git"
   "dir": "signature"
 files:
 - "lemoncoin-osx-unsigned.tar.gz"

@@ -19,7 +19,7 @@ packages:
 - "python"
 reference_datetime: "2016-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/lemoncoin/lemoncoin.git"
+- "url": "https://github.com/withthelemons/lemoncoin.git"
   "dir": "lemoncoin"
 files: []
 script: |
