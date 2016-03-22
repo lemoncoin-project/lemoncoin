@@ -161,6 +161,7 @@ BITCOIN_CORE_H = \
   hash/ar2/src/cores.h \
   hash/ar2/src/thread.h \
   hash/ar2/src/ref.h \
+  hash/ar2/src/blake2/blake2.h \
   hash/ar2/src/blake2/blake2-impl.h \
   hash/ar2/src/blake2/blamka-round-opt.h \
   hash/ar2/src/blake2/blamka-round-ref.h \
