@@ -39,7 +39,7 @@ AC_DEFUN([BITCOIN_QT_PATH_PROGS],[
     if test "x$$1" = "x" && test "x$4" != "xyes"; then
       BITCOIN_QT_FAIL([$1 not found])
     fi
-  ])Qt5PrintSupport
+  ])
 ])
 
 dnl Initialize qt input.
@@ -315,7 +315,6 @@ AC_DEFUN([_BITCOIN_QT_FIND_STATIC_PLUGINS],[
     if test x$qt_plugin_path != x; then
       QT_LIBS="$QT_LIBS -L$qt_plugin_path/accessible"
       QT_LIBS="$QT_LIBS -L$qt_plugin_path/codecs"
-      QT_LIBS="$QT_LIBS -L$qt_plugin_path/printsupport"
     fi
   fi
 ])
