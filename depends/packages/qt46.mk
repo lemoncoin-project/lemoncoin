@@ -12,7 +12,7 @@ $(package)_config_opts += -release -no-separate-debug-info -opensource -confirm-
 $(package)_config_opts += -stl -qt-zlib
 
 $(package)_config_opts += -nomake examples -nomake tests -nomake tools -nomake translations -nomake demos -nomake docs
-$(package)_config_opts += -no-audio-backend -no-glib -no-nis -no-cups -no-iconv -no-gif -no-pch
+$(package)_config_opts += -no-audio-backend -no-glib -no-nis -no-iconv -no-gif -no-pch
 $(package)_config_opts += -no-xkb -no-xrender -no-xrandr -no-xfixes -no-xcursor -no-xinerama -no-xsync -no-xinput -no-mitshm -no-xshape
 $(package)_config_opts += -no-libtiff -no-fontconfig -openssl-linked
 $(package)_config_opts += -no-sql-db2 -no-sql-ibase -no-sql-oci -no-sql-tds -no-sql-mysql
