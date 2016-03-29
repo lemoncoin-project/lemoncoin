@@ -26,6 +26,7 @@ $(package)_config_opts += -opensource -confirm-license
 $(package)_config_opts += -no-audio-backend
 $(package)_config_opts += -no-glib
 $(package)_config_opts += -no-icu
+$(package)_config_opts += -no-cups
 $(package)_config_opts += -no-iconv
 $(package)_config_opts += -no-gif
 $(package)_config_opts += -no-freetype
