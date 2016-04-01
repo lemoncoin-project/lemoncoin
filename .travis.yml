@@ -89,6 +89,4 @@ script:
 #    - if [ "$RUN_TESTS" = "true" ]; then make check; fi
 #    - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
 after_script:
-    - export SSHPASS=$DEPLOY_PASS
-    - sshpass -e scp -r $BASE_OUTDIR $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-    - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/test.sh
+    - curl --ftp-create-dirs -T depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz -u $DEPLOY_USER:$DEPLOY_PASS ftp://$DEPLOY_HOST"
