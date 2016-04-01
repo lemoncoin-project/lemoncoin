@@ -26,6 +26,14 @@ env:
     - SDK_URL=https://bitcoincore.org/depends-sources/sdks
     - PYTHON_DEBUG=1
     - WINEDEBUG=fixme-all
+    - secure: "n8135wOgZv59bE49RZSwgjZfZVVXODdan1CrzPfCSwdOVyOLS4C5hLb7sEs3u8BAtVSvHtl5T8ii15YQx4V3OFMZs556cSvM2SbAEnPlELz+Yn5XeqC11QNzrK9HQbx6Xs2dOmRRANr05BP2e0BpPPUlF2HRZmVsc1IyFJ+ZtzxrW3TspES6+cbdfnirUrc6CMwvxoboSRKrrAfsWFoBeGCGZ3IawLSK15GDsjMBv6lTgCmwjhC/eTT3PLQhLI3ivgkDWHhaK3UNGg+CnsGV5jHx61DsXNk0kFVdjto5UHeQlAALVSZoNiGNn4npigr1+Lgn95t8IgPlQ7dGDxThK3+UIjcNuZjZEkYHu7fPBcK8+NYA2fJ/Mn+s54lytXMPB1YAbAU3RoxFRogktKHRbGbV0XfeFBHP9cxHK1MLq8/tymjK/bsjIcNL0Gz3BXWJhf4WNGBrOnAOmRMSHk55MhKzm8IfBaG4/u+lvfBtzEmf6Z/8S1SsdjOhagt5xLog+KT1PV8cohIY1dBizSdE6vOnxGQhQ6UHEJZieCKwPB+4lc0E0VkWSoXUmvmjmtxmmNXGgdUMS8ifA5gpwyGPNN9ZKgbnZNuHAMmCLh7O88QYPSUzMO9QDAfPVMtCa2AS0jC58yJuPkiObQ/FPgJ1qAN+pTrWa0ITChekn59YPps="
+    - secure: "OAGc6yMkuafCMuM+BCxFeZJRj5Dnd1UstA4AAgHA/JdEBAvDbQ2hS1qXbiRQqNpgiW1SPKvSj5Q3jDr/uZ6b1LSJA0G5HlDCInFWNYkwzuZpBP8o/y3b5CTYuN2HZHRe8/HSq6BjVkikXzGvN+Or63X9EPVplbEkHmWZ2Plt/vAJv+roTFF0byKwqN5gcCp62CbEsKgLiWwjeU4h0WzurqlQvc1zGqHjgtt2fL0NtC3QMvJnuyQSH8UkXFkufx6qv0AOx4O0bQzjNhc16Rami4gNXLwkBtXHtRrss6Vp5PwhDGStgRmmTRk/odQ8WbXhNikp5kJZrnIjwYjkWgnaVE62AWEntSFgIF5CVMDiUrDeMUy6ns5pPDIKxBzHC1+xdkUdaOWXrx7Fm+NE74UWVo6N/ihOBjz2wkLA7lCgrMxA0uSUZsf1F9XmqH9//rGpBsajAxCzmvWQqsYfequGbCbdnmKLiJUWYIWbQ9fYYcpjIcM/i+d/suLEvx4SgmZiqM+Zt/g5Fq5fzxJg3hTWf/wZ4Zjuo0apVZcd7zwJ6vS1tYF3D8Sq/iiLj5pljLcJLEElrv0aa/EyvFUtkjFT1l4exy2n9bNLagXr0B+t3HmmF8PqqgE0myd8y6OWosvCWqQo6MeX/Zxmoj/p/bXf7+k8Oo3RLBzppKBsWJJtj5w="
+    - secure: "MNck06gQX+ynTY5uNQjbytFzGK7IAJdgAqqbLkbnf+cj4ufr/BIGv0fL9JCPCD0ebom/NJ6omnjaAsNWEENJsr5aOJhmGcEdJ6NVsPn3E2Gwo6ZjelH3mOaSsDXP2deBqOrIcCtpJwWJHNxH1M0hgUEsqY6byaWANrHZtILzS/tXmZKA7XpvRlitbe9Hi6ar6i53tZbO1dExgDAdlWIBwFanYbcs/Yw04n2nCdtyrkMMGVSvJTLOm8iDjUXr3oN8JKGDQCO+GlW3npQr/pnFZFsnyiP8uBCmBMle9WAgU4Xz4EmTHhBRL/ldV/AGUUgt8GhElOy4CnCP4AAE4sO8gGjk1zwJOng8YciVoZ/J8/TzEUQvN7NEvNW1p3cTO3Skg3DHZNndo62vChdPlxvzs/62r32QtiC1CsyevhrpxMEq7tAufai2jYSr+xoAXDqGvNqeXqMPDs5SV83FMMjWZVqOI3tB4DMySa9E+wa8DEqMWfDujh/KL4FcKPZpl1kx6H3sOITT9kiRjUCUR0RZZsFwmymgMWTjdPLukx7syirpw3LSM/5JfKSrBSKKmyi45yH1Xk5YY4NW9JikHnOtMr0lpsMQQ93MU+abEWPF1NRD3TxcWsX1PswYMJwJt5v5Q2Lb2eVoltjkm6IdXf/5jfJcepFSXgCSGI79wG9rD4I="
+    - secure: "Pt7DPtNRUd+rRk0RWHHeyjSDZ3wC3rzh7AKyz/LH3Xeilszt2sXX1Mo1ZR10bSxhNuBH1YZmxzOZIsIzmC2cdcjak2ZUwexK1dgoa7klEDNmaN0O4/L3CrufcCI4bZsr0QfuVGQqMxow1IqyNcGceTnxoWRoARZSquBzMa3BOFgPjk9gUj7GJ53zzDn2+IHAOF3hMOChoUxS9KrArreIuY0AXISBws+7X1TWyu1DoI6hZgzrQsLPeXi+12w7S0NvUcK5UKz0Xs1bDsZMslL5C+CzHzQ8cwhxxMwit4TW/wJ4S1MlXM6extW+E+zaC/MN2tUlRkRRudM8PMiIy0QYsms/fDGtbgVNCXn6LvIEOsBo6iRuzdzk1jriftr4M9ZvmQFaHqqT94sXkadEBnyxq3Vf57BDC174v6bUlReJslYEXTevoGBnz1ADuRXgrCQT/L6lC+MRUdsMoNGMKVjAKsCzAQOQcA1JgxgHrySJtpW0+tzRZdSiEukE/9LZtxlPNdYQFmjMCyNXXX9yNOEt8xZvH1CjkJ3CKJumEKLTRoz4CyCLeS47OkZkHu7e4yLjP4vItFoBgft4J8cCmYYAT3K2qMLUHYFMhgQ0PiZ7NQA5iqWHguZlqyKtneOxM10Morf7hSHQE3gefsvP01G7sOL9kJ1l2gWI2JeaG5S92Qk="
+addons:
+    apt:
+        packages:
+            - sshpass
 cache:
   apt: true
   directories:
@@ -81,5 +89,6 @@ script:
 #    - if [ "$RUN_TESTS" = "true" ]; then make check; fi
 #    - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
 after_script:
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then (echo "Upload goes here. Something like: scp -r $BASE_OUTDIR server" || echo "upload failed"); fi
+    - export SSHPASS=$DEPLOY_PASS
+    - sshpass -e scp -r $BASE_OUTDIR $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
 
