@@ -89,4 +89,5 @@ script:
 #    - if [ "$RUN_TESTS" = "true" ]; then make check; fi
 #    - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
 after_script:
-    - curl --ftp-create-dirs -T depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz -u $DEPLOY_USER:$DEPLOY_PASS ftp://$DEPLOY_HOST"
+    - if [ "$HOST" = "x86_64-apple-darwin11" ]; then curl --ftp-create-dirs -T depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz -u $DEPLOY_USER:$DEPLOY_PASS ftp://$DEPLOY_HOST; fi
+    - if [ "$HOST" = "x86_64-apple-darwin11" ]; then curl --ftp-create-dirs -T LemonCoin-Core.dmg -u $DEPLOY_USER:$DEPLOY_PASS ftp://$DEPLOY_HOST; fi
