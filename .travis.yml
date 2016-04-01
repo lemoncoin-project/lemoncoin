@@ -91,4 +91,5 @@ script:
 after_script:
     - export SSHPASS=$DEPLOY_PASS
     - sshpass -e scp -r $BASE_OUTDIR $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+    - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/test.sh
 
