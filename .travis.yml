@@ -1,0 +1,92 @@
+# errata:
+# - A travis bug causes caches to trample eachother when using the same
+#   compiler key (which we don't use anyway). This is worked around for now by
+#   replacing the "compilers" with a build name prefixed by the no-op ":"
+#   command. See: https://github.com/travis-ci/travis-ci/issues/4393
+# - sudo/dist/group are set so as to get Blue Box VMs, necessary for [loopback]
+#   IPv6 support
+
+sudo: required
+dist: precise
+group: legacy
+
+os: linux
+language: cpp
+compiler: gcc
+env:
+  global:
+    - MAKEJOBS=-j3
+    - RUN_TESTS=false
+    - CHECK_DOC=0
+    - BOOST_TEST_RANDOM=1$TRAVIS_BUILD_ID
+    - CCACHE_SIZE=100M
+    - CCACHE_TEMPDIR=/tmp/.ccache-temp
+    - CCACHE_COMPRESS=1
+    - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
+    - SDK_URL=https://bitcoincore.org/depends-sources/sdks
+    - PYTHON_DEBUG=1
+    - WINEDEBUG=fixme-all
+    - secure: "mVYEvslxzMWAk5wh9c4XTMvF8/8oQwXZkBYEszJeSELL7nfNvhR5zzi7Ap0dxuy3v4skxPaHCtyLzJgySlS8aF8rjL0CLb3occktq2f7VUpqEsnNmdEtTpHJly9wRx25NF3nGGMDulQdcBSqV4e+uj3NZGlmCFyuhU9NC51fGMua7K1ZEmEHFMfgtm5W11QtITyHEKpHnqqstAdkskSp72vrvVcaVBYbKovAE9Vr+y1hwtAyfPTV5QrGhlQmQIapItkHmICRVdZe4x63Bsk3U42ETJE0z7GYm/i/ioXXllrOcEJuKlRP1IRXhpfQ4dzoZ2ZQB5yMubkq7rC+KAEYyXPetuqOeMvt9U5hvlB7JwgywLpu5fbduSKi9bCV7wf4TGRmzDn5ByGa4F6jc0wuXW+p5Ftn+YqyE8O+Xeaj/3fQbGXw/E24A/R57QH25JZpLdjrIGu4CXyEpEPhaMu16gLZdKxWQjnoOF1atlDLWJS5Hig2VtwSOF9iylup8yEoqXNbbkKtofu03YxOeCgtWZCyi3rATvBKwXI1v0oOcls+gZ4rIgea6/Fpx82g6fQf8zGwi1jCiGUNn6UAAhcY3OjV7LzCSATy/qDTXovjtaB6nQVF9yufN+rnRFmr9LAaFWMiqFPnH22j2k1Qrwda5neLzaZrgfhDL2jAOwB1TWA="
+    - secure: "JbU1Qr2ApDrDMQmw/QG0wv4RgzCk/naX0HVsSPIC6bu6hJkWsOmquX6WcH6Dgfjcn30KO6vjriaSi1cwJ/nNnfW89q9G5/JIzLhFKvLp5w2jWRYZ+k3Vkq+9qRkFT6d32SuJ5x5zW9m0dntjsiD83KbgLr42RWLXOyFz+daP3o8L4eAEijJy/Rco1WlUa6qE/L0/md7Jh6LgOvMSFPrV4Coydw2R/CElfBk0D1M4FAmXV6wiHoB6Mgvni3MmOD2Jmjp3eU0nZs6FUE/MqJMupirm9u6BH1DLEVLwXzl6RznY3X9qI8c7L2CejckaqTCCvfbD0fxrWe0fc/TquaweK95UK64xYdz2+bOD/jrzIx9upOAz9cP60kAHTFPp2oqsw4UiifXp80PdTpF7lGHqIodqIxU2f/4mx/Ak4B9m0p2qckEzH2dE99/axe3A5pYU+86Vs/weyheiCIr7Pkct6BTrwEMQjE4TMhkBavijJQYeym6nBVr1t2JlmhYq10gUIKUl3c37RG9izYkLty1XzeZ4GmRInxVDlbXEBLZG9QuMw4g2m3pUrmfyGXybWor2cmcX2zVZ56fGRYEgvOXLq7+6SZCWltI0AniMhK9bTGJ+uZIdrYIAsRgPwSowiGD4dHHzFWK+Qezp20Drft61MHvng6g09HxWPDcqXiCC7nM="
+    - secure: "F+ZbBt1d80gtZ68TTrueDEnEfMogQFAlhD3Zq34vE6QkeNqoRPKQcFTHb1V4x8BmlIPsoI06BOgfxRDhGYdITDN5Z6+pSfvlCCfN2MyIu6oWk5gP7URlKl9sBQX3ebpCBPUjezLW1Vi2Toj5/5fQ5si4zQtQGTxwwssXsIyN4muXbkyhjO6G4AqVCoBd1LF+s1YOc8uGJvRYFMuS6iNBnrnOgI0uMloTcA8aNciSZoKrPpU2f39lRvKh7GeAr3s4YvqTSz/CI58O6OccbwyjU39MwYZegvSMB2GYPN2UvkdkZmqed88qJ7ePu5dkHQS8gWFVieK2wAmd4dvLwY1VzijcZDWnjnCnRr7bz21Q9uJ5bs5JOAj70Af0R+lNBr1NMiSQkpMvgXRMmJ0B/TQmYIzFYRN6aHTXyIo5ap8KzhX60rGd3NRBN3eOjV/zQF7R99SVLKpDnpeMCMyYo+s3uPXy+ehqaDxpvzc6t0ZTGT7O0UybezugbckLKlFkhCVD6q9woBKYVwjBwCImBmRF5ID/3IGzkyE4SaptoIiY0e4jHPqSQyDRY/EcCXNcnvO3GklBRPoAeWZcwS5lZivoyXdzE5zphCqTzaAK3z4BGUA/8YdGyQIMMrX8PT1yol+jegBcncdweVx/oyAeatRdf31dmYM7GBT6hybQFTmG/j0="
+    - secure: "xF06hGTN42r3udeuA1wyO80BO7rdVSeJb83errAclNLr0hc8ePMbfPKIP4P3JU6M9fgEP0QP5KzZNgupabA2L3vpeVkMPuzNwx4f6BV1yjjIKODDkUEm32HP+AZhzLgSdinz4nTimfIubV5ZRqqWLPwZ2nlQu99mpOqk9TJ8wVv4jSq8fwB44m5ILIFCchP42yQ4QMZ946PqePro/5Ck2zpFrt5B0e+KBODWIvVUr+45rwz1Uinbunf3WJR3adWMEGBfSsx8eWYOruZ4WETDPurtG2kNKDVxn6Cy0RAxlF0lbT/3KMdKnzxk6LTAuU/kNZ4KobN7KWG6onY0PGANfUk4cPPBFJ1ZjBjE6tMV6zC23MtsJ3tP22bIYm9FN3tsR0xS46Re6kS9pgAneyHQ9Heua1cC20MOfVU1i+jyx3Dtsg9CtYjJ3nS3xQFMwgycpVAYIBjNTaK8gyEtx1OnUO0+89gm77sg9N4CjfAXSh6TCu6bkyj1uJ7n6/0U6CwTug8R9JlYvNkiA/cNhSbDgR/9tdy6bpyjLoDHbm5C6GPexwBjVv0KIVZMAU7Oo9HQfmsPwoFxofhD3B5S/mMggeY/2B9V0+ItRg7E6v1X+XNB0eixlC0FCkzeAIIcJk0y2VSWrSGguzd0aX4npRoCijZTcbBYJwkMH0/vNckw9TA="
+addons:
+    apt:
+        packages:
+            - sshpass
+cache:
+  apt: true
+  directories:
+  - depends/built
+  - depends/sdk-sources
+  - $HOME/.ccache
+matrix:
+  fast_finish: true
+  include:
+# Arm is not yet supported because of Scrypt-Jane
+#    - compiler: ": ARM"
+#      env: HOST=arm-linux-gnueabihf PACKAGES="g++-arm-linux-gnueabihf" DEP_OPTS="NO_QT=1" CHECK_DOC=1 GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
+    - compiler: ": Win32"
+      env: HOST=i686-w64-mingw32 PPA="ppa:ubuntu-wine/ppa" PACKAGES="nsis gcc-mingw-w64-i686 g++-mingw-w64-i686 binutils-mingw-w64-i686 mingw-w64-dev wine1.7 bc" RUN_TESTS=true GOAL="deploy" BITCOIN_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
+    - compiler: ": Win64"
+      env: HOST=x86_64-w64-mingw32 PPA="ppa:ubuntu-wine/ppa" PACKAGES="nsis gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-dev wine1.7 bc" RUN_TESTS=true GOAL="deploy" BITCOIN_CONFIG="--enable-gui --enable-reduce-exports" MAKEJOBS="-j2"
+    - compiler: ": 32-bit + dash"
+      env: HOST=i686-pc-linux-gnu PACKAGES="g++-multilib bc python-zmq" PPA="ppa:chris-lea/zeromq" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-zmq --enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++" USE_SHELL="/bin/dash"
+    - compiler: ": bitcoind"
+      env: HOST=x86_64-unknown-linux-gnu PACKAGES="bc python-zmq" PPA="ppa:chris-lea/zeromq" DEP_OPTS="NO_QT=1 NO_UPNP=1 DEBUG=1" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-zmq --enable-glibc-back-compat --enable-reduce-exports CPPFLAGS=-DDEBUG_LOCKORDER"
+    - compiler: ": No wallet"
+      env: HOST=x86_64-unknown-linux-gnu DEP_OPTS="NO_WALLET=1" RUN_TESTS=true GOAL="install" BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
+    - compiler: ": Cross-Mac"
+      env: HOST=x86_64-apple-darwin11 PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python-dev" BITCOIN_CONFIG="--enable-reduce-exports" OSX_SDK=10.9 GOAL="deploy"
+  exclude:
+    - compiler: gcc
+install:
+    - if [ -n "$PACKAGES" ]; then sudo rm -f /etc/apt/sources.list.d/travis_ci_zeromq3-source.list; fi
+    - if [ -n "$PPA" ]; then travis_retry sudo add-apt-repository "$PPA" -y; fi
+    - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get update; fi
+    - if [ -n "$PACKAGES" ]; then travis_retry sudo apt-get install --no-install-recommends --no-upgrade -qq $PACKAGES; fi
+before_script:
+    - unset CC; unset CXX
+    - if [ "$CHECK_DOC" = 1 ]; then contrib/devtools/check-doc.py; fi
+    - mkdir -p depends/SDKs depends/sdk-sources
+    - if [ -n "$OSX_SDK" -a ! -f depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz ]; then curl --location --fail $SDK_URL/MacOSX${OSX_SDK}.sdk.tar.gz -o depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz; fi
+    - if [ -n "$OSX_SDK" -a -f depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz ]; then tar -C depends/SDKs -xf depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz; fi
+    - make $MAKEJOBS -C depends HOST=$HOST $DEP_OPTS
+script:
+    - if [ -n "$USE_SHELL" ]; then export CONFIG_SHELL="$USE_SHELL"; fi
+    - OUTDIR=$BASE_OUTDIR/$TRAVIS_PULL_REQUEST/$TRAVIS_JOB_NUMBER-$HOST
+    - BITCOIN_CONFIG_ALL="--disable-dependency-tracking --prefix=$TRAVIS_BUILD_DIR/depends/$HOST --bindir=$OUTDIR/bin --libdir=$OUTDIR/lib"
+    - depends/$HOST/native/bin/ccache --max-size=$CCACHE_SIZE
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then export CCACHE_READONLY=1; fi
+    - test -n "$USE_SHELL" && eval '"$USE_SHELL" -c "./autogen.sh"' || ./autogen.sh
+    - ./configure --cache-file=config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
+    - make distdir PACKAGE=bitcoin VERSION=$HOST
+    - cd bitcoin-$HOST
+    - ./configure --cache-file=../config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false)
+    - make $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && make $GOAL V=1 ; false )
+    - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
+# Don't run tests, they are not ready yet
+#    - if [ "$RUN_TESTS" = "true" ]; then make check; fi
+#    - if [ "$RUN_TESTS" = "true" ]; then qa/pull-tester/rpc-tests.py --coverage; fi
+after_script:
+    - curl --ftp-create-dirs -T depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz -u $DEPLOY_USER:$DEPLOY_PASS ftp://$DEPLOY_HOST"
