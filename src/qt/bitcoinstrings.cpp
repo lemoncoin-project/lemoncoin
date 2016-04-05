@@ -112,8 +112,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", ""
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "This product includes software developed by the OpenSSL Project for use in "
 "the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software "
-"written by Eric Young and UPnP software written by Thomas Bernard. "
-"Paper wallet art provided by Anacoluthia."),
+"written by Eric Young and UPnP software written by Thomas Bernard."),
 QT_TRANSLATE_NOOP("bitcoin-core", ""
 "To use lemoncoind, or the -server option to lemoncoin-qt, you must set an "
 "rpcpassword in the configuration file:\n"
