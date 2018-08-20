@@ -1,27 +1,24 @@
-# errata:
-# - A travis bug causes caches to trample eachother when using the same
-#   compiler key (which we don't use anyway). This is worked around for now by
-#   replacing the "compilers" with a build name prefixed by the no-op ":"
-#   command. See: https://github.com/travis-ci/travis-ci/issues/4393
-# - sudo/dist/group are set so as to get Blue Box VMs, necessary for [loopback]
-#   IPv6 support
-
 sudo: required
-dist: precise
-group: legacy
-
+dist: trusty
 os: linux
 language: cpp
+cache:
+  ccache: true
+  directories:
+  - depends/built
+  - depends/sdk-sources
+  - $HOME/.ccache
 compiler: gcc
 env:
   global:
-    - MAKEJOBS=-j3
+    - MAKEJOBS=-j2
     - RUN_TESTS=false
     - CHECK_DOC=0
     - BOOST_TEST_RANDOM=1$TRAVIS_BUILD_ID
     - CCACHE_SIZE=100M
     - CCACHE_TEMPDIR=/tmp/.ccache-temp
     - CCACHE_COMPRESS=1
+    - CCACHE_DIR=$HOME/.ccache
     - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
     - SDK_URL=https://bitcoincore.org/depends-sources/sdks
     - PYTHON_DEBUG=1
