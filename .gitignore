@@ -114,3 +114,13 @@ share/lemoncoindComparisonTool.jar
 /doc/doxygen/
 
 libbitcoinconsensus.pc
+
+src/config/bitcoin-config\.h\.in
+
+src/config/bitcoin-config\.h
+
+qa/pull-tester/run-bitcoind-for-test\.sh
+
+qa/pull-tester/tests-config\.sh
+
+src/\.directory
