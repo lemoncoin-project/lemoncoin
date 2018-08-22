@@ -57,7 +57,7 @@ script:
     - BEGIN_FOLD distdir; DOCKER_EXEC make distdir VERSION=$HOST; END_FOLD
     - cd lemoncoin-$HOST
     - ls
-    - cat src/qt/bitcoin.qrc
+    - ls src/qt/res/movies
     - BEGIN_FOLD configure; DOCKER_EXEC ./configure --cache-file=../config.cache $BITCOIN_CONFIG_ALL $BITCOIN_CONFIG || ( cat config.log && false); END_FOLD
     - BEGIN_FOLD build; DOCKER_EXEC make $MAKEJOBS $GOAL || ( echo "Build failure. Verbose build follows." && DOCKER_EXEC make $GOAL V=1 ; false ); END_FOLD
 after_script:
@@ -127,4 +127,4 @@ jobs:
         PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python-dev python3-setuptools-git"
         OSX_SDK=10.11
         GOAL="all deploy"
-        BITCOIN_CONFIG="--enable-gui --enable-reduce-exports --enable-werror --disable-tests"
+        BITCOIN_CONFIG="--enable-gui --enable-reduce-exports --enable-werror --disable-tests CFLAGS=-no-integrated-as"
