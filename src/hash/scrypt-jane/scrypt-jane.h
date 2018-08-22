@@ -19,6 +19,18 @@
 
 #include <stdlib.h>
 
+// https://llvm.org/bugs/show_bug.cgi?id=18916
+#if defined(__clang__)
+# define GNU_ATT_SYNTAX ".att_syntax;"
+# define GNU_INTEL_SYNTAX ".intel_syntax;"
+#elif defined(__GNUC__)
+# define GNU_ATT_SYNTAX ".att_syntax prefix;"
+# define GNU_INTEL_SYNTAX ".intel_syntax noprefix;"
+#else
+# define GNU_ATT_SYNTAX ".att_syntax prefix;"
+# define GNU_INTEL_SYNTAX ".intel_syntax noprefix;"
+#endif
+
 typedef void (*scrypt_fatal_errorfn)(const char *msg);
 void scrypt_set_fatal_error(scrypt_fatal_errorfn fn);
 
