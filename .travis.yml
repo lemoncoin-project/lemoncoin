@@ -73,7 +73,7 @@ jobs:
         PACKAGES="python3 nsis g++-mingw-w64-i686 wine-binfmt wine32"
         RUN_TESTS=true
         GOAL="install"
-        BITCOIN_CONFIG="--enable-reduce-exports"
+        BITCOIN_CONFIG="--enable-reduce-exports --disable-tests"
 # Win64
     - stage: test
       env: >-
@@ -82,7 +82,7 @@ jobs:
         PACKAGES="python3 nsis g++-mingw-w64-x86-64 wine-binfmt wine64"
         RUN_TESTS=true
         GOAL="install"
-        BITCOIN_CONFIG="--enable-reduce-exports"
+        BITCOIN_CONFIG="--enable-reduce-exports --disable-tests"
 # 32-bit + dash
     - stage: test
       env: >-
@@ -91,7 +91,7 @@ jobs:
         DEP_OPTS="NO_QT=1"
         RUN_TESTS=true
         GOAL="install"
-        BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++"
+        BITCOIN_CONFIG="--enable-glibc-back-compat --enable-reduce-exports --disable-tests LDFLAGS=-static-libstdc++"
         CONFIG_SHELL="/bin/dash"
 # x86_64 Linux (uses qt5 dev package instead of depends Qt to speed up build and avoid timeout)
     - stage: test
@@ -102,7 +102,7 @@ jobs:
         RUN_TESTS=true
         RUN_BENCH=true
         GOAL="install"
-        BITCOIN_CONFIG="--with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --enable-debug CXXFLAGS=\"-g0 -O2\""
+        BITCOIN_CONFIG="--with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --disable-tests --enable-debug CXXFLAGS=\"-g0 -O2\""
 # x86_64 Linux (Qt5 & system libs)
     - stage: test
       env: >-
@@ -111,7 +111,7 @@ jobs:
         NO_DEPENDS=1
         RUN_TESTS=true
         GOAL="install"
-        BITCOIN_CONFIG="--with-incompatible-bdb --enable-glibc-back-compat --enable-reduce-exports --with-gui=qt5 CPPFLAGS=-DDEBUG_LOCKORDER"
+        BITCOIN_CONFIG="--with-incompatible-bdb --enable-glibc-back-compat --enable-reduce-exports --with-gui=qt5 --disable-tests CPPFLAGS=-DDEBUG_LOCKORDER"
 # x86_64 Linux, No wallet
     - stage: test
       env: >-
@@ -128,4 +128,4 @@ jobs:
         PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python-dev python3-setuptools-git"
         OSX_SDK=10.11
         GOAL="all deploy"
-        BITCOIN_CONFIG="--enable-gui --enable-reduce-exports --enable-werror"
+        BITCOIN_CONFIG="--enable-gui --enable-reduce-exports --enable-werror --disable-tests"
