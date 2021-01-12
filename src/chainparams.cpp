@@ -133,7 +133,7 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0xb417b77aff17f47301ff5c6edba9c8d0751ce99e9c72525232bb15eb42c9be11"));
         assert(genesis.hashMerkleRoot == uint256S("0xcdbcb6d3b0d8ff88473f23c943e5c63265db188d7c681397238e964f8f87a44f"));
 
-        vSeeds.push_back(CDNSSeedData("lemoncoin.cc", "seed.lemoncoin.cc"));
+        vSeeds.push_back(CDNSSeedData("lemoncoin.cc", "dnsseed.lemoncoin.cc"));
         //vSeeds.push_back(CDNSSeedData("45.32.180.199", "45.32.180.199"));
         //vSeeds.push_back(CDNSSeedData("lemoncoin.net", "seed.lemoncoin.net"));
         
