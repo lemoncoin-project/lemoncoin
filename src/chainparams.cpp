@@ -2,6 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2015 The Dogecoin Core developers
 // Copyright (c) 2016 The LemonCoin developers
+// Copyright (c) 2021 Argon Citrate developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -133,7 +134,10 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0xb417b77aff17f47301ff5c6edba9c8d0751ce99e9c72525232bb15eb42c9be11"));
         assert(genesis.hashMerkleRoot == uint256S("0xcdbcb6d3b0d8ff88473f23c943e5c63265db188d7c681397238e964f8f87a44f"));
 
-        vSeeds.push_back(CDNSSeedData("45.32.180.199", "45.32.180.199"));
+        vSeeds.push_back(CDNSSeedData("lemoncoin.cc", "dnsseed.lemoncoin.cc"));
+        //vSeeds.push_back(CDNSSeedData("lemoncoin.cc", "nourish.lemoncoin.cc"));
+        //vSeeds.push_back(CDNSSeedData("lemoncoin.cc",   "meyer.lemoncoin.cc"));
+        //vSeeds.push_back(CDNSSeedData("45.32.180.199", "45.32.180.199"));
         //vSeeds.push_back(CDNSSeedData("lemoncoin.net", "seed.lemoncoin.net"));
         
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
